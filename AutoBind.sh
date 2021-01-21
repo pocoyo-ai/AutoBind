@@ -71,6 +71,20 @@ fi
 
 echo 'Se instalarán las dependencias bind9 y dns-utils'
 
+sudo dpkg -s ifupdown &> /dev/null
+
+if [ -d /usr/share/doc/ifupdown/ ];
+then
+	tput setaf 2; echo "El paquete ifupdown está instalado."
+	tput sgr 0
+else
+	tput setaf 1; echo "Se instalará el paquete ifupdown."
+	sleep 5s
+	tput setaf 3;
+	sudo apt-get -y install ifupdown
+	tput sgr 0
+fi
+
 sudo dpkg -s bind9 &> /dev/null
 
 if [ $? -ne 0 ]
