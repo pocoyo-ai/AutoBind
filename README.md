@@ -3,19 +3,19 @@
 
 AutoBind will create a DNS server (Bind) with many automated commands 
 
-Instalación:
+How to install:
 
   1. apt-get install -y git
   2. git clone https://github.com/pocoyo-ai/AutoBind/
   3. cd AutoBind
   4. sudo chmod +x AutoBind.sh
 
-Utilización:
+Using AutoBind:
 
   1. sudo ./AutoBind.sh
   
-Nota:
+Notes:
 
-Cada instalación modifica / elimina instalaciones previas. 
+Each installation eliminates previous configurations regarding the connection and bind server.
+                                                
                                                 RULZZ ~~~~
-Programa para utilización educacional.
