@@ -234,6 +234,16 @@ tput sgr 0;
 
 	echo "Permitiendo manejo de interfaces para Network-Manager"
 	sudo sed -i "s/managed=none/managed=true/g" $DnsNMDir/NetworkManager.conf;
+	
+# Estableciendo ipv4 como protocolo dominante
+
+if [ -e /etc/default/named ]; then
+echo 'Se ha realizado una copia del fichero /etc/default/named'
+sed -i.bak '6s/.*/OPTIONS="-4"/g' /etc/default/named;
+echo 'Se ha establecido el protocolo ipv4 para el servidor dns'
+else
+echo 'No se encuentra el fichero named, debes activar el protocolo ipv4 para el servidor bind'
+fi
 
 # Reiniciando servicios y limpiando caché
 
@@ -241,6 +251,7 @@ tput setaf 2; echo "Reiniciando servicios y limpiando caché dns"
 tput sgr 0;
 
 	sudo systemd-resolve --flush-caches
+	service named restart
 	sudo service bind9 restart
 	sudo service network-manager restart
 	sleep 1
